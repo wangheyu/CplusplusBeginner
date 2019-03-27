@@ -11,7 +11,7 @@ int main()
     const size_t N = 100;  /* number of grid points */
     const size_t n = N - 2; /* subtract 2 to exclude boundaries */
     const double h = 1.0 / (N - 1.0);  /* grid spacing */
-    gsl_spmatrix *A = gsl_spmatrix_alloc(n ,n); /* triplet format */
+    gsl_spmatrix *A = gsl_spmatrix_alloc(n, n); /* triplet format */
     gsl_spmatrix *C;  /* compressed format */
     gsl_vector *f = gsl_vector_alloc(n); /* right hand side vector */
     gsl_vector *u = gsl_vector_alloc(n); /* solution vector */
