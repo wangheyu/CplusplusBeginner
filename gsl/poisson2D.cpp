@@ -5,18 +5,27 @@
 #include <gsl/gsl_vector.h>
 #include <gsl/gsl_spmatrix.h>
 #include <gsl/gsl_splinalg.h>
+#include <vector>
+#include <iostream>
+
+double real(double x, double y);
+
+double source(double x, double y);
 
 int main()
 {
+    double x0 = 0.1, x1 = 1.1, y0 = 0.1, y1 = 1.1; 
     const size_t N = 100;  /* number of grid points */
     const size_t n = N - 2; /* subtract 2 to exclude boundaries */
     const size_t n_dof = n * n;  /* Total degree of freedoms */
-    const double h = 1.0 / (N - 1.0);  /* grid spacing */
+    const double h = (x1 - x0) / (N - 1.0);  /* grid spacing */
     gsl_spmatrix *A = gsl_spmatrix_alloc(n_dof, n_dof); /* triplet format */
     gsl_spmatrix *C;  /* compressed format */
     gsl_vector *f = gsl_vector_alloc(n_dof); /* right hand side vector */
     gsl_vector *u = gsl_vector_alloc(n_dof); /* solution vector */
+    std::vector<double> rhs(n_dof, 0.0);
     size_t i, j;
+    
 
     for (i = 0; i < n; ++i)
 	for (j = 0; j < n; ++j)
@@ -60,45 +69,44 @@ int main()
     for (i = 0; i < n; ++i)
 	for (j = 0; j < n; ++j)
 	{
-	    double xi = (i + 1) * h + 0.1;
-	    double yi = (j + 1) * h + 0.1;
-	    double fi = -2.0 * M_PI * M_PI * sin(M_PI * xi) * sin(M_PI * yi);
+	    double xi = x0 + (i + 1) * h;
+	    double yi = y0 + (j + 1) * h;
+	    double fi = source(xi, yi);// -2.0 * M_PI * M_PI * sin(M_PI * xi) * sin(M_PI * yi);
 	    int idx = j * n + i;
-	    gsl_vector_set(f, idx, fi);
+	    rhs[idx] = fi;
 	}
 
     for (i = 0; i < n; ++i)
     {
-	double xi = (i + 1) * h + 0.1;
-	double yi = 0 + 0.1;
-	double bi =  sin(M_PI * xi) * sin(M_PI * yi);
+	double xi = x0 + (i + 1) * h;
+	double bi =  sin(M_PI * xi) * sin(M_PI * y0);
 	int idx = i;
-	gsl_vector_set(f, idx, gsl_vector_get(f, idx) - bi / (h * h));
-	yi = (n + 1) * h + 0.1;
-	double ui =  sin(M_PI * xi) * sin(M_PI * yi);
+	rhs[idx] -= bi / (h * h);
+	double ui =  sin(M_PI * xi) * sin(M_PI * y1);
 	idx = (n - 1) * n + i;
-	gsl_vector_set(f, idx, gsl_vector_get(f, idx) - ui / (h * h));
+	rhs[idx] -= ui / (h * h);
     }
 
     for (j = 0; j < n; ++j)
     {
-	double xi = 0 + 0.1;
-	double yi = (j + 1) * h + 0.1;
-	double li =  sin(M_PI * xi) * sin(M_PI * yi);
+	double yi = y0 + (j + 1) * h;
+	double li =  sin(M_PI * x0) * sin(M_PI * yi);
 	int idx = j * n;
-	gsl_vector_set(f, idx, gsl_vector_get(f, idx) - li / (h * h));
-	xi = (n + 1) * h + 0.1;
-	double ri =  sin(M_PI * xi) * sin(M_PI * yi);
+	rhs[idx] -= li / (h * h);
+	double ri =  sin(M_PI * x1) * sin(M_PI * yi);
 	idx = j * n + n - 1;
-	gsl_vector_set(f, idx, gsl_vector_get(f, idx) - ri / (h * h));
+	rhs[idx] -= ri / (h * h);
     }
 
+    for (i = 0; i < n_dof; ++i)
+	gsl_vector_set(f, i, rhs[i]);
+    
     /* convert to compressed column format */
     C = gsl_spmatrix_ccs(A);
 
     /* now solve the system with the GMRES iterative solver */
     {
-	const double tol = 1.0e-15; /* solution relative tolerance */
+	const double tol = 1.0e-7; /* solution relative tolerance */
 	const size_t max_iter = 1000; /* maximum iterations */
 	const gsl_splinalg_itersolve_type *T = gsl_splinalg_itersolve_gmres;
 	gsl_splinalg_itersolve *work =   gsl_splinalg_itersolve_alloc(T, n * n, 0);
@@ -120,17 +128,57 @@ int main()
 	}
 	while (status == GSL_CONTINUE && ++iter < max_iter);
 	/* output solution*/
-	// for (i = 0; i < n; ++i)
-	// 	   for (j = 0; j < n; ++j)
-	// {
-	// 	   double xi = (i + 1) * h;
-	// 	   double yi = (j + 1) * h;
-	// 	   int idx = j * n + i;
-	// 	   double u_exact= sin(M_PI * xi) * sin(M_PI * yi);
-	// 	   double u_gsl = gsl_vector_get(u, idx);
-	// 	   printf("%f %.12e %.12e\n", xi, u_gsl, u_exact);
-	// }
-	// gsl_splinalg_itersolve_free(work);
+	double error = 0.0;
+
+	for (i = 0; i < n; ++i)
+	{
+	    for (j = 0; j < n; ++j)
+	    {
+		double xi = x0 + (i + 1) * h;
+		double yi = y0 + (j + 1) * h;
+		int idx = j * n + i;
+		double u_exact= real(xi, yi); //sin(M_PI * xi) * sin(M_PI * yi);
+		double u_gsl = gsl_vector_get(u, idx);
+		error += (u_exact - u_gsl) * (u_exact - u_gsl);
+	    }
+	}
+
+	std::cout.setf(std::ios::fixed);
+	std::cout << "x = linspace(" << x0 << ", " << x1 << ", " << N << ");" << std::endl;
+	std::cout << "y = linspace(" << x0 << ", " << x1 << ", " << N << ");" << std::endl;
+	std::cout << "[X, Y] = meshgrid(x, y);" << std::endl;
+	std::cout << "A =[" << std::endl;
+	std::cout << real(x0, y0) << "\t";
+	for (i = 0; i < n; ++i)
+	{
+	    double xi = x0 + (i + 1) * h;
+	    std::cout << real(xi, y0) << "\t";
+	}
+	std::cout << real(x1, y0) << "\t";
+	std::cout << std::endl;
+	for (j = 0; j < n; ++j)
+	{
+	    double yi = y0 + (j + 1) * h;
+	    std::cout << real(x0, yi) << "\t";
+	    for (i = 0; i < n; ++i)
+	    {
+		double xi = x0 + (i + 1) * h;
+		int idx = j * n + i;
+		double u_gsl = gsl_vector_get(u, idx);
+		std::cout << u_gsl << "\t"; 
+	    }
+	    std::cout << real(x1, yi) << "\t";
+	    std::cout << std::endl;
+	}
+	std::cout << real(x0, y1) << "\t";
+	for (i = 0; i < n; ++i)
+	{
+	    double xi = x0 + (i + 1) * h;
+	    std::cout << real(xi, y1) << "\t";
+	}
+	std::cout << real(x1, y1) << "];" << std::endl;
+	std::cerr <<  "l2norm of error = " <<  sqrt(error) / n_dof << std::endl;
+	gsl_splinalg_itersolve_free(work);
     }
     gsl_spmatrix_free(A);
     gsl_spmatrix_free(C);
@@ -138,3 +186,16 @@ int main()
     gsl_vector_free(u);
     return 0;
 };
+
+
+double real(double x, double y)
+{
+    return (sin(M_PI * x) * sin(M_PI * y));
+};
+
+double source(double x, double y)
+{
+    return (-2.0 * M_PI * M_PI * real(x, y));
+};
+
+
