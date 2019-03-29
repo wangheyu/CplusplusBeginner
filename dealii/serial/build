@@ -1,0 +1,1 @@
+ g++ -o test poisson2D.cpp -O3  -g -std=c++14  -I/usr/include/deal.II -I/usr/local/dealii-8.1.0/include/deal.II/ -I/usr/local/dealii-8.1.0/include/ -I/usr/include/mpi -I/usr/include/trilinos/ -fPIC -D__SERIALIZATION__ -DMULTITHREAD -pthread -ftemplate-depth-128 -I/usr/local/AFEPack/library/include -lmpi -lmpi_cxx -L/usr/local/dealii-8.1.0/lib -ldeal_II -ltbb
