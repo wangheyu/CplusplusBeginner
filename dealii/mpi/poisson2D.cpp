@@ -28,7 +28,7 @@ int main(int argc, char* argv[])
 {
     dealii::Utilities::MPI::MPI_InitFinalize mpi_initialization (argc, argv, 4);
     double x0 = 0.1, x1 = 1.1, y0 = 0.1, y1 = 1.1; 
-    const size_t N = 3000;  /* number of grid points */
+    const size_t N = 2000;  /* number of grid points */
     const size_t n = N - 2; /* subtract 2 to exclude boundaries */
     const size_t n_dof = n * n;  /* Total degree of freedoms */
     const double h = (x1 - x0) / (N - 1.0);  /* grid spacing */

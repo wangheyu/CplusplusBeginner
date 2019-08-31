@@ -15,7 +15,7 @@ double source(double x, double y);
 int main()
 {
     double x0 = 0.1, x1 = 1.1, y0 = 0.1, y1 = 1.1; 
-    const size_t N = 100;  /* number of grid points */
+    const size_t N = 201;  /* number of grid points */
     const size_t n = N - 2; /* subtract 2 to exclude boundaries */
     const size_t n_dof = n * n;  /* Total degree of freedoms */
     const double h = (x1 - x0) / (N - 1.0);  /* grid spacing */
@@ -143,41 +143,41 @@ int main()
 	    }
 	}
 
-	std::cout.setf(std::ios::fixed);
-	std::cout << "x = linspace(" << x0 << ", " << x1 << ", " << N << ");" << std::endl;
-	std::cout << "y = linspace(" << x0 << ", " << x1 << ", " << N << ");" << std::endl;
-	std::cout << "[X, Y] = meshgrid(x, y);" << std::endl;
-	std::cout << "A =[" << std::endl;
-	std::cout << real(x0, y0) << "\t";
-	for (i = 0; i < n; ++i)
-	{
-	    double xi = x0 + (i + 1) * h;
-	    std::cout << real(xi, y0) << "\t";
-	}
-	std::cout << real(x1, y0) << "\t";
-	std::cout << std::endl;
-	for (j = 0; j < n; ++j)
-	{
-	    double yi = y0 + (j + 1) * h;
-	    std::cout << real(x0, yi) << "\t";
-	    for (i = 0; i < n; ++i)
-	    {
-		double xi = x0 + (i + 1) * h;
-		int idx = j * n + i;
-		double u_gsl = gsl_vector_get(u, idx);
-		std::cout << u_gsl << "\t"; 
-	    }
-	    std::cout << real(x1, yi) << "\t";
-	    std::cout << std::endl;
-	}
-	std::cout << real(x0, y1) << "\t";
-	for (i = 0; i < n; ++i)
-	{
-	    double xi = x0 + (i + 1) * h;
-	    std::cout << real(xi, y1) << "\t";
-	}
-	std::cout << real(x1, y1) << "];" << std::endl;
-	std::cerr <<  "l2norm of error = " <<  sqrt(error) / n_dof << std::endl;
+	// std::cout.setf(std::ios::fixed);
+	// std::cout << "x = linspace(" << x0 << ", " << x1 << ", " << N << ");" << std::endl;
+	// std::cout << "y = linspace(" << x0 << ", " << x1 << ", " << N << ");" << std::endl;
+	// std::cout << "[X, Y] = meshgrid(x, y);" << std::endl;
+	// std::cout << "A =[" << std::endl;
+	// std::cout << real(x0, y0) << "\t";
+	// for (i = 0; i < n; ++i)
+	// {
+	//     double xi = x0 + (i + 1) * h;
+	//     std::cout << real(xi, y0) << "\t";
+	// }
+	// std::cout << real(x1, y0) << "\t";
+	// std::cout << std::endl;
+	// for (j = 0; j < n; ++j)
+	// {
+	//     double yi = y0 + (j + 1) * h;
+	//     std::cout << real(x0, yi) << "\t";
+	//     for (i = 0; i < n; ++i)
+	//     {
+	// 	double xi = x0 + (i + 1) * h;
+	// 	int idx = j * n + i;
+	// 	double u_gsl = gsl_vector_get(u, idx);
+	// 	std::cout << u_gsl << "\t"; 
+	//     }
+	//     std::cout << real(x1, yi) << "\t";
+	//     std::cout << std::endl;
+	// }
+	// std::cout << real(x0, y1) << "\t";
+	// for (i = 0; i < n; ++i)
+	// {
+	//     double xi = x0 + (i + 1) * h;
+	//     std::cout << real(xi, y1) << "\t";
+	// }
+	// std::cout << real(x1, y1) << "];" << std::endl;
+	// std::cerr <<  "l2norm of error = " <<  sqrt(error) / n_dof << std::endl;
 	gsl_splinalg_itersolve_free(work);
     }
     gsl_spmatrix_free(A);
