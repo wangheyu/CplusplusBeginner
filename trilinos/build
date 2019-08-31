@@ -1,0 +1,1 @@
+ g++ test.cpp -I/usr/include/trilinos -ltrilinos_teuchoscore -ltrilinos_epetra -ltrilinos_amesos
