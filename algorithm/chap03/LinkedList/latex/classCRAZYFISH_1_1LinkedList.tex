@@ -1,0 +1,236 @@
+\hypertarget{classCRAZYFISH_1_1LinkedList}{}\section{C\+R\+A\+Z\+Y\+F\+I\+SH\+:\+:Linked\+List$<$ T\+Y\+PE $>$ Class Template Reference}
+\label{classCRAZYFISH_1_1LinkedList}\index{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List$<$ T\+Y\+P\+E $>$@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List$<$ T\+Y\+P\+E $>$}}
+
+
+{\ttfamily \#include $<$Linked\+List.\+h$>$}
+
+
+
+Collaboration diagram for C\+R\+A\+Z\+Y\+F\+I\+SH\+:\+:Linked\+List$<$ T\+Y\+PE $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=245pt]{classCRAZYFISH_1_1LinkedList__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classCRAZYFISH_1_1LinkedList_1_1Node}{Node}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCRAZYFISH_1_1LinkedList_a8cfb7db8375d42e804107bed6ee300d8}{Linked\+List} ()
+\item 
+\hyperlink{classCRAZYFISH_1_1LinkedList_a97ff37e22764e437dfeff71c686cfbd0}{Linked\+List} (\hyperlink{classCRAZYFISH_1_1LinkedList_1_1Node}{Node} \&\+\_\+new)
+\item 
+\hyperlink{classCRAZYFISH_1_1LinkedList_a5d084245dc02a983ba9645c80fc14cea}{Linked\+List} (T\+Y\+PE \&\+\_\+val)
+\item 
+\hyperlink{classCRAZYFISH_1_1LinkedList_a6e2311f3cc0ef21d731e0f17a005eca0}{$\sim$\+Linked\+List} ()
+\item 
+int \hyperlink{classCRAZYFISH_1_1LinkedList_aef8407ee5167b26ed5a5707fc2886fb8}{print\+Linked\+List} ()
+\item 
+T\+Y\+PE $\ast$ \hyperlink{classCRAZYFISH_1_1LinkedList_a9ec77e618ea899c8458824a2a10066de}{find} (T\+Y\+PE \+\_\+d)
+\item 
+int \hyperlink{classCRAZYFISH_1_1LinkedList_a114e00935149d4c6fb68cc4654a4904c}{insert} (\hyperlink{classCRAZYFISH_1_1LinkedList_1_1Node}{Node} \&\+\_\+new)
+\item 
+int \hyperlink{classCRAZYFISH_1_1LinkedList_a431acbe0a25d8e3d56994fcd427d21d7}{insert} (T\+Y\+PE \&\+\_\+val)
+\item 
+int \hyperlink{classCRAZYFISH_1_1LinkedList_aed4f2193935fb362eae3d47bb789edee}{del} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCRAZYFISH_1_1LinkedList_1_1Node}{Node} $\ast$ \hyperlink{classCRAZYFISH_1_1LinkedList_a1439d0f5f10624ffd090cdec5430390d}{\+\_\+\+\_\+head}
+\item 
+\hyperlink{classCRAZYFISH_1_1LinkedList_1_1Node}{Node} $\ast$ \hyperlink{classCRAZYFISH_1_1LinkedList_aa964652536c838dbbe87900de5f8816e}{\+\_\+\+\_\+current}
+\item 
+int \hyperlink{classCRAZYFISH_1_1LinkedList_afe0f4aa3de15119600fd14c4a6ed3fc1}{\+\_\+\+\_\+length}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \hyperlink{classCRAZYFISH_1_1LinkedList_a77f02bc38eca13d0374fd4b50b1b17a1}{operator$<$$<$} (std\+::ostream \&, const \hyperlink{classCRAZYFISH_1_1LinkedList}{Linked\+List}$<$ T\+Y\+PE $>$ \&)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T\+Y\+PE$>$\newline
+class C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List$<$ T\+Y\+P\+E $>$}
+
+Using standard array in C++ to implement List A\+DT. T\+Y\+PE can be char, int, long, double or long double. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCRAZYFISH_1_1LinkedList_a8cfb7db8375d42e804107bed6ee300d8}\label{classCRAZYFISH_1_1LinkedList_a8cfb7db8375d42e804107bed6ee300d8}} 
+\index{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}!Linked\+List@{Linked\+List}}
+\index{Linked\+List@{Linked\+List}!C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}}
+\subsubsection{\texorpdfstring{Linked\+List()}{LinkedList()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$class T\+Y\+PE$>$ \\
+\hyperlink{classCRAZYFISH_1_1LinkedList}{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}$<$ T\+Y\+PE $>$\+::\hyperlink{classCRAZYFISH_1_1LinkedList}{Linked\+List} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+The default constructor. Build an empty List. \mbox{\Hypertarget{classCRAZYFISH_1_1LinkedList_a97ff37e22764e437dfeff71c686cfbd0}\label{classCRAZYFISH_1_1LinkedList_a97ff37e22764e437dfeff71c686cfbd0}} 
+\index{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}!Linked\+List@{Linked\+List}}
+\index{Linked\+List@{Linked\+List}!C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}}
+\subsubsection{\texorpdfstring{Linked\+List()}{LinkedList()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$class T\+Y\+PE $>$ \\
+\hyperlink{classCRAZYFISH_1_1LinkedList}{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}$<$ T\+Y\+PE $>$\+::\hyperlink{classCRAZYFISH_1_1LinkedList}{Linked\+List} (\begin{DoxyParamCaption}\item[{\hyperlink{classCRAZYFISH_1_1LinkedList_1_1Node}{Node} \&}]{\+\_\+new }\end{DoxyParamCaption})}
+
+Constructor, build a List with the first element is \+\_\+new.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+new} & An assigned node. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCRAZYFISH_1_1LinkedList_a5d084245dc02a983ba9645c80fc14cea}\label{classCRAZYFISH_1_1LinkedList_a5d084245dc02a983ba9645c80fc14cea}} 
+\index{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}!Linked\+List@{Linked\+List}}
+\index{Linked\+List@{Linked\+List}!C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}}
+\subsubsection{\texorpdfstring{Linked\+List()}{LinkedList()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$class T\+Y\+PE $>$ \\
+\hyperlink{classCRAZYFISH_1_1LinkedList}{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}$<$ T\+Y\+PE $>$\+::\hyperlink{classCRAZYFISH_1_1LinkedList}{Linked\+List} (\begin{DoxyParamCaption}\item[{T\+Y\+PE \&}]{\+\_\+val }\end{DoxyParamCaption})}
+
+Constructor, build a List with the value of the first element is \+\_\+val.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+new} & An assigned node. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classCRAZYFISH_1_1LinkedList_a6e2311f3cc0ef21d731e0f17a005eca0}\label{classCRAZYFISH_1_1LinkedList_a6e2311f3cc0ef21d731e0f17a005eca0}} 
+\index{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}!````~Linked\+List@{$\sim$\+Linked\+List}}
+\index{````~Linked\+List@{$\sim$\+Linked\+List}!C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}}
+\subsubsection{\texorpdfstring{$\sim$\+Linked\+List()}{~LinkedList()}}
+{\footnotesize\ttfamily template$<$class T\+Y\+PE$>$ \\
+\hyperlink{classCRAZYFISH_1_1LinkedList}{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}$<$ T\+Y\+PE $>$\+::$\sim$\hyperlink{classCRAZYFISH_1_1LinkedList}{Linked\+List} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Default destructor. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCRAZYFISH_1_1LinkedList_aed4f2193935fb362eae3d47bb789edee}\label{classCRAZYFISH_1_1LinkedList_aed4f2193935fb362eae3d47bb789edee}} 
+\index{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}!del@{del}}
+\index{del@{del}!C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}}
+\subsubsection{\texorpdfstring{del()}{del()}}
+{\footnotesize\ttfamily template$<$class T\+Y\+PE $>$ \\
+int \hyperlink{classCRAZYFISH_1_1LinkedList}{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}$<$ T\+Y\+PE $>$\+::del (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Delete the node A\+F\+T\+ER the current pointer. If the current one is head, then delete the first one if it exists or do nothing if the List is empty. Can not use name delete because it\textquotesingle{}s a key word.
+
+\begin{DoxyReturn}{Returns}
+0 for OK -\/1 for else. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCRAZYFISH_1_1LinkedList_a9ec77e618ea899c8458824a2a10066de}\label{classCRAZYFISH_1_1LinkedList_a9ec77e618ea899c8458824a2a10066de}} 
+\index{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}!find@{find}}
+\index{find@{find}!C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}}
+\subsubsection{\texorpdfstring{find()}{find()}}
+{\footnotesize\ttfamily template$<$class T\+Y\+PE $>$ \\
+T\+Y\+PE $\ast$ \hyperlink{classCRAZYFISH_1_1LinkedList}{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}$<$ T\+Y\+PE $>$\+::find (\begin{DoxyParamCaption}\item[{T\+Y\+PE}]{\+\_\+d }\end{DoxyParamCaption})}
+
+Find if the List contains value \+\_\+d.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+d} & The value to find.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The address of the first node with value \+\_\+d if found, otherwise N\+U\+LL. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCRAZYFISH_1_1LinkedList_a114e00935149d4c6fb68cc4654a4904c}\label{classCRAZYFISH_1_1LinkedList_a114e00935149d4c6fb68cc4654a4904c}} 
+\index{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}!insert@{insert}}
+\index{insert@{insert}!C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}}
+\subsubsection{\texorpdfstring{insert()}{insert()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T\+Y\+PE $>$ \\
+int \hyperlink{classCRAZYFISH_1_1LinkedList}{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}$<$ T\+Y\+PE $>$\+::insert (\begin{DoxyParamCaption}\item[{\hyperlink{classCRAZYFISH_1_1LinkedList_1_1Node}{Node} \&}]{\+\_\+new }\end{DoxyParamCaption})}
+
+Insert a new node after the current pointer. If the List is empty, then add it as the first node.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+new} & New node.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 for OK -\/1 for else. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCRAZYFISH_1_1LinkedList_a431acbe0a25d8e3d56994fcd427d21d7}\label{classCRAZYFISH_1_1LinkedList_a431acbe0a25d8e3d56994fcd427d21d7}} 
+\index{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}!insert@{insert}}
+\index{insert@{insert}!C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}}
+\subsubsection{\texorpdfstring{insert()}{insert()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T\+Y\+PE$>$ \\
+int \hyperlink{classCRAZYFISH_1_1LinkedList}{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}$<$ T\+Y\+PE $>$\+::insert (\begin{DoxyParamCaption}\item[{T\+Y\+PE \&}]{\+\_\+val }\end{DoxyParamCaption})}
+
+Insert a new node after the current pointer. If the List is empty, then add it as the first node.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+val} & The value in the new node.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 for OK -\/1 for else. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classCRAZYFISH_1_1LinkedList_aef8407ee5167b26ed5a5707fc2886fb8}\label{classCRAZYFISH_1_1LinkedList_aef8407ee5167b26ed5a5707fc2886fb8}} 
+\index{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}!print\+Linked\+List@{print\+Linked\+List}}
+\index{print\+Linked\+List@{print\+Linked\+List}!C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}}
+\subsubsection{\texorpdfstring{print\+Linked\+List()}{printLinkedList()}}
+{\footnotesize\ttfamily template$<$class T\+Y\+PE $>$ \\
+int \hyperlink{classCRAZYFISH_1_1LinkedList}{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}$<$ T\+Y\+PE $>$\+::print\+Linked\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Print out all elements of the List. For debug using.
+
+\begin{DoxyReturn}{Returns}
+If everything is fine, return 0, otherwise -\/1. 
+\end{DoxyReturn}
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classCRAZYFISH_1_1LinkedList_a77f02bc38eca13d0374fd4b50b1b17a1}\label{classCRAZYFISH_1_1LinkedList_a77f02bc38eca13d0374fd4b50b1b17a1}} 
+\index{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}}
+\subsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily template$<$class T\+Y\+PE$>$ \\
+std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \hyperlink{classCRAZYFISH_1_1LinkedList}{Linked\+List}$<$ T\+Y\+PE $>$ \&}]{\+\_\+obj }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+To print out the content in streams.
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & an output stream followed. \\
+\hline
+{\em \+\_\+obj} & the List to output.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the stream to output. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classCRAZYFISH_1_1LinkedList_aa964652536c838dbbe87900de5f8816e}\label{classCRAZYFISH_1_1LinkedList_aa964652536c838dbbe87900de5f8816e}} 
+\index{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}!\+\_\+\+\_\+current@{\+\_\+\+\_\+current}}
+\index{\+\_\+\+\_\+current@{\+\_\+\+\_\+current}!C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+current}{\_\_current}}
+{\footnotesize\ttfamily template$<$class T\+Y\+PE$>$ \\
+\hyperlink{classCRAZYFISH_1_1LinkedList_1_1Node}{Node}$\ast$ \hyperlink{classCRAZYFISH_1_1LinkedList}{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}$<$ T\+Y\+PE $>$\+::\+\_\+\+\_\+current\hspace{0.3cm}{\ttfamily [private]}}
+
+The address of current element. \mbox{\Hypertarget{classCRAZYFISH_1_1LinkedList_a1439d0f5f10624ffd090cdec5430390d}\label{classCRAZYFISH_1_1LinkedList_a1439d0f5f10624ffd090cdec5430390d}} 
+\index{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}!\+\_\+\+\_\+head@{\+\_\+\+\_\+head}}
+\index{\+\_\+\+\_\+head@{\+\_\+\+\_\+head}!C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+head}{\_\_head}}
+{\footnotesize\ttfamily template$<$class T\+Y\+PE$>$ \\
+\hyperlink{classCRAZYFISH_1_1LinkedList_1_1Node}{Node}$\ast$ \hyperlink{classCRAZYFISH_1_1LinkedList}{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}$<$ T\+Y\+PE $>$\+::\+\_\+\+\_\+head\hspace{0.3cm}{\ttfamily [private]}}
+
+The head pointer of the List. \mbox{\Hypertarget{classCRAZYFISH_1_1LinkedList_afe0f4aa3de15119600fd14c4a6ed3fc1}\label{classCRAZYFISH_1_1LinkedList_afe0f4aa3de15119600fd14c4a6ed3fc1}} 
+\index{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}!\+\_\+\+\_\+length@{\+\_\+\+\_\+length}}
+\index{\+\_\+\+\_\+length@{\+\_\+\+\_\+length}!C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List@{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+length}{\_\_length}}
+{\footnotesize\ttfamily template$<$class T\+Y\+PE$>$ \\
+int \hyperlink{classCRAZYFISH_1_1LinkedList}{C\+R\+A\+Z\+Y\+F\+I\+S\+H\+::\+Linked\+List}$<$ T\+Y\+PE $>$\+::\+\_\+\+\_\+length\hspace{0.3cm}{\ttfamily [private]}}
+
+The length of the List. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{LinkedList_8h}{Linked\+List.\+h}\item 
+Linked\+List.\+templates.\+h\end{DoxyCompactItemize}
