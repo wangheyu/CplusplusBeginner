@@ -19,17 +19,6 @@
 namespace CRAZYFISH{
     template<class TYPE> class LinkedList;
 
-    /** 
-     * To print out the content in streams.
-     * 
-     * @param os an output stream followed.
-     * @param _obj the List to output.
-     * 
-     * @return the stream to output.
-     */
-    template <class TYPE> std::ostream& operator<<(std::ostream &os,
-						   const LinkedList<TYPE> &_obj);
-    
     /**
      * Using standard array in C++ to implement List ADT. TYPE can be 
      * char, int, long, double or long double. 
@@ -91,14 +80,6 @@ namespace CRAZYFISH{
 	};
 
 	/** 
-	 * Constructor, build a List with the first node 
-         * is _new.
-	 * 
-	 * @param _new An assigned node.
-	 */
-	LinkedList(Node &_new);
-
-	/** 
 	 * Constructor, build a List with the value of the first 
          * node is _val.
 	 * 
@@ -129,16 +110,6 @@ namespace CRAZYFISH{
          *         with value _d if found, otherwise NULL.
 	 */
 	Node* find(TYPE _d) const;
-
-	/** 
-	 * Insert a new node after the current pointer. If the List is
-         * empty, then add it as the first node.
-	 * 
-	 * @param _new New node.
-	 * 
-	 * @return 0 for OK -1 for else.
-	 */
-	int insert(Node &_new);
 
 	/** 
 	 * Insert a new node after the current pointer. If the List is
@@ -205,8 +176,23 @@ namespace CRAZYFISH{
 	 */
 	Node* getHead() const;
 
-	friend std::ostream& operator<< <> (std::ostream&,
-					    const LinkedList<TYPE>&);
+	/** 
+	 * Get value of the current node. Report error if the current is 
+         * NULL.
+	 * 
+	 * 
+	 * @return The value of current node.
+	 */
+	TYPE getValue() const;
+	
+	/** 
+	 * Set value of the current node. Report error if the current is 
+         * NULL.
+	 * 
+	 * 
+	 * @return 0 for OK -1 for else.
+	 */
+	int setValue(TYPE _val);
     };
 }
 #else

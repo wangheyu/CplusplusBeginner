@@ -2,15 +2,6 @@
 
 namespace CRAZYFISH{
     template <class TYPE>
-    LinkedList<TYPE>::LinkedList(Node &_new)
-    {
-	__head = &_new;
-	__head->next = NULL;   // Double make sure the end.
-	__current = __head;
-	__length = 1;
-    };
-
-    template <class TYPE>
     LinkedList<TYPE>::LinkedList(TYPE _val)
     {
 	__head = new Node;
@@ -46,26 +37,6 @@ namespace CRAZYFISH{
 		return NULL;
 	}
 	return p;
-    };
-
-    template <class TYPE>
-    int LinkedList<TYPE>::insert(Node &_new)
-    {
-	Node *p = __current;
-	if (p == NULL)    // Is a empty List?
-	{
-	    __head = &_new;
-	    __head->next = NULL;   // Wahtever make sure the end mark is set.
-	    __current = __head;    // The initial value of current will always
-	                           // keep same as the head.
-	}
-	else
-	{
-	    _new.next = p->next;   // Link the part after current.
-	    p->next = &_new;
-	}
-	__length += 1;
-	return 0;
     };
 
     template <class TYPE>
@@ -109,6 +80,7 @@ namespace CRAZYFISH{
 	{
 	    __head = NULL;   // Delete the last node, it becomes an empty List.
 	    __length = 0;
+	    __current = __head;
 	    delete p;        // Free the memory of the deleted node.
 	}
 	else
@@ -118,14 +90,13 @@ namespace CRAZYFISH{
 	    delete q;
 	    __length -= 1;
 	}
-	    
 	return 0;
     };
 
     template <class TYPE>
     int LinkedList<TYPE>::succeed()
     {
-	if (__current != NULL || __current->next != NULL)
+	if (__current != NULL)
 	    __current = __current->next;
 	return 0;
     };
@@ -150,11 +121,22 @@ namespace CRAZYFISH{
     };
 
     template <class TYPE>
-    std::ostream &operator<<(std::ostream& os,
-			     const LinkedList<TYPE>& _obj)
+    TYPE LinkedList<TYPE>::getValue() const
     {
-//	for (int i = 0; i < _obj.__length; i++)
-//	    os << _obj.__data[i] << "\t";
-//	return os;
+	if (__current == NULL)
+	    std::cerr << "Current node is Null." << std::endl;
+	return __current->value;
+    };
+
+    template <class TYPE>
+    int LinkedList<TYPE>::setValue(TYPE _val) 
+    {
+	if (__current == NULL)
+	{
+	    std::cerr << "Current node is Null." << std::endl;
+	    return -1;
+	}
+	__current->value = _val;
+	return 0;
     };
 }

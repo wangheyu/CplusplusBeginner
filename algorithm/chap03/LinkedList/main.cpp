@@ -4,19 +4,23 @@
 int main(int argc, char *argv[])
 {
     CRAZYFISH::LinkedList<double> A(2.71);
-    CRAZYFISH::LinkedList<double>::Node node(3.14);
-    CRAZYFISH::LinkedList<double> B(node);
     CRAZYFISH::LinkedList<double> C;
-    C.insert(node);
-    C.insert(2.71);
-//    A.insert(node);   /// ??? What's wrong?
-    CRAZYFISH::LinkedList<double>::Node node1(3.14);
-    A.insert(node1);
+    C.insert(3.14);
     A.printLinkedList();
     C.printLinkedList();
+    C.insert(2.71);
     C.del();
     C.insert(1.41);
     C.printLinkedList();
     A.del();
+    A.printLinkedList();
+    A.del();
+    A.printLinkedList();
+    C.setCurrent(NULL);
+    C.del();
+    A.insert(3.14);
+    C.printLinkedList();
+    C.setValue(A.getValue());
+    C.printLinkedList();
     return 0;
 };
