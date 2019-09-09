@@ -1,7 +1,7 @@
 #include "LinkedList.h"
 
 namespace CRAZYFISH{
-    template <class TYPE>
+    template <typename TYPE>
     LinkedList<TYPE>::LinkedList(TYPE _val)
     {
 	__head = new Node;
@@ -11,7 +11,7 @@ namespace CRAZYFISH{
 	__length = 1;
     };
 
-    template <class TYPE>
+    template <typename TYPE>
     int LinkedList<TYPE>::printLinkedList() const
     {
 	std::cout << "List all elements:" << std::endl;
@@ -24,7 +24,7 @@ namespace CRAZYFISH{
 	std::cout << std::endl;
     };
 
-    template <class TYPE>
+    template <typename TYPE>
     typename LinkedList<TYPE>::Node* LinkedList<TYPE>::find(TYPE _d) const
     {
 	Node *p = __head;
@@ -39,7 +39,7 @@ namespace CRAZYFISH{
 	return p;
     };
 
-    template <class TYPE>
+    template <typename TYPE>
     int LinkedList<TYPE>::insert(TYPE _val)
     {
 	Node *p = __current;
@@ -61,7 +61,7 @@ namespace CRAZYFISH{
 	return 0;
     };
 
-    template <class TYPE>
+    template <typename TYPE>
     int LinkedList<TYPE>::del()
     {
 	Node *p = __current;
@@ -93,7 +93,7 @@ namespace CRAZYFISH{
 	return 0;
     };
 
-    template <class TYPE>
+    template <typename TYPE>
     int LinkedList<TYPE>::succeed()
     {
 	if (__current != NULL)
@@ -101,26 +101,26 @@ namespace CRAZYFISH{
 	return 0;
     };
 
-    template <class TYPE>
+    template <typename TYPE>
     int LinkedList<TYPE>::setCurrent(Node *p)
     {
 	__current = p;
 	return 0;
     };
 
-    template <class TYPE>
+    template <typename TYPE>
     typename LinkedList<TYPE>::Node* LinkedList<TYPE>::getCurrent() const
     {
 	return __current;
     };
     
-    template <class TYPE>
+    template <typename TYPE>
     typename LinkedList<TYPE>::Node* LinkedList<TYPE>::getHead() const
     {
 	return __head;
     };
 
-    template <class TYPE>
+    template <typename TYPE>
     TYPE LinkedList<TYPE>::getValue() const
     {
 	if (__current == NULL)
@@ -128,7 +128,7 @@ namespace CRAZYFISH{
 	return __current->value;
     };
 
-    template <class TYPE>
+    template <typename TYPE>
     int LinkedList<TYPE>::setValue(TYPE _val) 
     {
 	if (__current == NULL)

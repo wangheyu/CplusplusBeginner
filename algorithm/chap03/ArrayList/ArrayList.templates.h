@@ -2,14 +2,14 @@
 
 namespace CRAZYFISH{
 
-    template <class TYPE>
+    template <typename TYPE>
     ArrayList<TYPE>::ArrayList(int _s)
     {
 	__data = new TYPE[_s];
 	__length = _s;
     };
 
-    template <class TYPE>
+    template <typename TYPE>
     ArrayList<TYPE>::ArrayList(int _s, TYPE _d)
     {
 	__data = new TYPE[_s];
@@ -18,7 +18,7 @@ namespace CRAZYFISH{
 	    __data[i] = _d;
     };
 
-    template <class TYPE>
+    template <typename TYPE>
     ArrayList<TYPE>::~ArrayList()
     {
 	if (__data != NULL)
@@ -26,7 +26,7 @@ namespace CRAZYFISH{
 	__length = 0;
     };
 
-    template <class TYPE>
+    template <typename TYPE>
     int ArrayList<TYPE>::printArrayList()
     {
 	std::cerr << "List all items:" << std::endl;
@@ -36,7 +36,7 @@ namespace CRAZYFISH{
 	return 0;
     };
 
-    template <class TYPE>
+    template <typename TYPE>
     int ArrayList<TYPE>::find(TYPE _d)
     {
 	int idx = -1;
@@ -46,14 +46,14 @@ namespace CRAZYFISH{
 	return idx;
     };
 
-    template <class TYPE>
+    template <typename TYPE>
     int ArrayList<TYPE>::merge_sort()
     {
 	__merge_sort(0, __length - 1);
 	printArrayList();
     };
 
-    template <class TYPE>
+    template <typename TYPE>
     int ArrayList<TYPE>::__merge_sort(int _p,
 				      int _r)
     {
@@ -67,7 +67,7 @@ namespace CRAZYFISH{
 	return 0;
     };
     
-    template <class TYPE>
+    template <typename TYPE>
     int ArrayList<TYPE>::__merge(int _p,
 				 int _q,
 				 int _r)
@@ -104,19 +104,19 @@ namespace CRAZYFISH{
 	return 0;
     };
 
-    template <class TYPE>
+    template <typename TYPE>
     TYPE &ArrayList<TYPE>::operator[](int _i)
     {
 	return __data[_i]; 
     };
 
-    template <class TYPE>
+    template <typename TYPE>
     const TYPE &ArrayList<TYPE>::operator[](int _i) const
     {
 	return __data[_i]; 
     };
 
-    template <class TYPE>
+    template <typename TYPE>
     std::ostream &operator<<(std::ostream& os,
 			     const ArrayList<TYPE>& _obj)
     {

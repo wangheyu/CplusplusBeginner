@@ -9,6 +9,7 @@
  */
 
 #include "IntCell.h"
+#include "IntCell.h"
 
 int main()
 {

@@ -8,8 +8,8 @@
  * 
  */
 
-#ifndef __CRAZYFISH__IntCell__
-#define __CRAZYFISH__IntCell__
+#ifndef __CRAZYFISH__Point__
+#define __CRAZYFISH__Point__
 
 #include <iostream>
 #include <vector>
@@ -25,6 +25,8 @@ public:
     const double *read() const;  
     double &operator[](int i);
 };
+
+
 
 std::ostream &operator<<(std::ostream&, const Point&);
 // Reload the << operator for output. Should a friend of Point.
@@ -62,6 +64,7 @@ std::ostream &operator<<(std::ostream& os, const Point& _pnt)
 
 int main(int argc, char *argv[])
 {
+
     Point a(1, 2);
     // Convenient! 
     std::cout << a[0] << ", " << a[1] << std::endl;

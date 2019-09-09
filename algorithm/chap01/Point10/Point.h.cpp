@@ -3,13 +3,13 @@
  * @author Wang Heyu <wang@wukong>
  * @date   Sat Aug 10 09:23:08 2019
  * 
- * @brief  A class design for 2D points.
+ * @brief  A class design for points.
  * 
  * 
  */
 
-#ifndef __CRAZYFISH__IntCell__
-#define __CRAZYFISH__IntCell__
+#ifndef __CRAZYFISH__Point__
+#define __CRAZYFISH__Point__
 
 #include <iostream>
 #include <vector>

@@ -8,8 +8,8 @@
  * 
  */
 
-#ifndef __CRAZYFISH__IntCell__
-#define __CRAZYFISH__IntCell__
+#ifndef __CRAZYFISH__Point__
+#define __CRAZYFISH__Point__
 
 #include <iostream>
 #include <vector>
@@ -22,7 +22,7 @@ public:
     Point(double x, double y);
     const double *read() const;  
     double &operator[](int i);     // Reload the [] operatior.
-};
+};                 
 
 Point::Point(double x, double y) 
 {
@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
     // Convenient! 
     std::cout << a[0] << ", " << a[1] << std::endl;
     // Even can change the values.
-    a[1] = 6;
+    a[1] = 6;  
     std::cout << a[0] << ", " << a[1] << std::endl;
     return 0;
 };

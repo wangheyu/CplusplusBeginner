@@ -18,7 +18,7 @@
 
 namespace CRAZYFISH{
 
-    template<class TYPE> class ArrayList;
+    template<typename TYPE> class ArrayList;
 
     /** 
      * To print out the content in streams.
@@ -28,7 +28,7 @@ namespace CRAZYFISH{
      * 
      * @return the stream to output.
      */
-    template <class TYPE> std::ostream& operator<<(std::ostream &os,
+    template <typename TYPE> std::ostream& operator<<(std::ostream &os,
 						   const ArrayList<TYPE> &_obj);
     
     /**
@@ -36,7 +36,7 @@ namespace CRAZYFISH{
      * char, int, long, double or long double. 
      * 
      */
-    template <class TYPE>
+    template <typename TYPE>
     class ArrayList
     {
     private:

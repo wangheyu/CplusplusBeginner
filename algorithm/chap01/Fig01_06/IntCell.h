@@ -22,10 +22,10 @@ public:
     explicit IntCell(int initialValue = 0)
 	: storedValue(initialValue)
     {};
-    
+
     int read() const
     {
-	// storedValue = -1;  // error!
+        storedValue = -1;  // error! const!
 	return storedValue;
     };
     

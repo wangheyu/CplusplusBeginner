@@ -8,8 +8,8 @@
  * 
  */
 
-#ifndef __CRAZYFISH__IntCell__
-#define __CRAZYFISH__IntCell__
+#ifndef __CRAZYFISH__Point__
+#define __CRAZYFISH__Point__
 
 #include <iostream>
 #include <vector>

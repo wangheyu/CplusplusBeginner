@@ -17,14 +17,15 @@
 #include <cstdlib>
 
 namespace CRAZYFISH{
-    template<class TYPE> class LinkedList;
+    template<typename TYPE> class LinkedList;
 
     /**
-     * Using standard array in C++ to implement List ADT. TYPE can be 
-     * char, int, long, double or long double. 
+     * An implementation of List ADT, using standard C++ 
+     * dynamical memory allocation functions (new / delete). 
+     * TYPE can be char, int, long, double or long double. 
      * 
      */
-    template <class TYPE>
+    template <typename TYPE>
     class LinkedList
     {
     public:
@@ -194,6 +195,8 @@ namespace CRAZYFISH{
 	 */
 	int setValue(TYPE _val);
     };
+
+
 }
 #else
 //Do nothing.
