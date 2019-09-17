@@ -28,8 +28,8 @@ public:
     Point(double x, double y);
     const double *read() const;  
     double &operator[](int i);
-//    const double &operator[](int i) const;  // Without this, then the return of
-                                              // can not be a rvalue. 
+    const double &operator[](int i) const;  // Without this, then the return of
+                                            // can not be a rvalue. 
     Point &operator+=(const Point &_pnt); 
 };
 
@@ -55,10 +55,10 @@ double &Point::operator[](int i)
 };
 
 // A read-only version for [] operator.
-//const double &Point::operator[](int i) const
-//{
-//    return coordinate[i];
-//};
+const double &Point::operator[](int i) const
+{
+   return coordinate[i];
+};
 
 Point &Point::operator+=(const Point &_pnt)
 {
@@ -99,10 +99,10 @@ int main(int argc, char *argv[])
     // Convenient! 
     std::cout << "a = " << a << std::endl;
     std::cout << "b = " << b << std::endl;
+    // Point c = a + b;
     std::cout << "a + b = " << a + b << std::endl;
-    // Error! Formula a+=b will return a lvalue, however,
-    // current << only accept const.
-    // std::cout << "a += b is " << a += b << std::endl;
+
+    std::cout << "a += b is " << (a += b) << std::endl;
     a += b;
     std::cout << "a += b is " << a << std::endl;
     return 0;

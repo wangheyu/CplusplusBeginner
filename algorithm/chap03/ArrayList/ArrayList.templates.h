@@ -1,4 +1,4 @@
-#include "ArrayList.h"
+#include "ArrayList.h"   
 
 namespace CRAZYFISH{
 
@@ -59,7 +59,7 @@ namespace CRAZYFISH{
     {
 	if (_p < _r)
 	{
-	    int q = (_p + _r) / 2;
+	    int q = (_p + _r) / 2;   // floor.
 	    __merge_sort(_p, q);
 	    __merge_sort(q + 1, _r);
 	    __merge(_p, q, _r);
