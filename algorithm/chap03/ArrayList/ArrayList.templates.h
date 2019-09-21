@@ -42,7 +42,10 @@ namespace CRAZYFISH{
 	int idx = -1;
 	for (int i = 0; i < __length; i++)
 	    if (__data[i] == _d)
+	    {
 		idx = i;
+		break;
+	    }
 	return idx;
     };
 
