@@ -42,7 +42,6 @@ public:
     int release();
     int transplant(Node *_u, Node *_v);
     int display() const;
-    int display(Node *_x, int _pos) const;
     int height(Node *_x) const;
     int height() const;
     int updateDepthandPos();
@@ -177,9 +176,10 @@ int BinaryTree::inorder_walk() const
 
 int BinaryTree::reinit(Node *_r)
 {
-    Node *t = __root;
+    /// We can not release old root since it may be still in using. 
+//    Node *t = __root;
     __root = _r;
-    release(t);
+//    release(t);
     return 0;
 };
 
@@ -251,12 +251,15 @@ inline int BinaryTree::__pow2(int _x) const
 
 int BinaryTree::display() const
 {
-    std::queue<Node *> val;
-    std::queue<Node *> output;
+    std::queue<Node *> val;	/**< For breadth-first tree walk. */
+    std::queue<Node *> output;	/**< For print tree.  */
+    /// Children status for a node.
     enum ChildCases {LEFT, RIGHT, BOTH, NONE};
-    std::queue<ChildCases> output_cc;
-    std::queue<ChildCases> branch_cache;
-    std::queue<Node *> node_cache;
+    std::queue<ChildCases> output_cc; /**< The children stauts 
+					 of nodes outputing.*/
+    std::queue<ChildCases> branch_cache; /**< Cache the branches between 
+					    node and its children. */
+    std::queue<Node *> node_cache; /**< Cache the nodes for outputing. */
     if (__root != NULL)
 	val.push(__root);
     else
@@ -264,10 +267,16 @@ int BinaryTree::display() const
 	std::cout << "The tree is empty." << std::endl;
 	return 0;
     }
-    int h = height();
-    int width = __pow2(h + 1) - 1;
-    std::vector<int> counter(h , 0);
-    int count = 0;
+    int h = height();		/**< Height of the whole tree. */
+    std::vector<int> counter(h , 0); /**< Record the nodes number 
+					for each tree layer. */
+    int count = 0;		/**< Count the number of outputed nodes.  */
+    /// In this loop, we use a queue val to apply a breadth-first tree
+    /// walking and to record the order of nodes ouputing by another
+    /// queue output. In the same time, we also record the children
+    /// status of each outputing node by queue output_cc, and the
+    /// number of nodes to output in each layer of the tree by vector
+    /// counter.
     while (!val.empty())
     {
 	bool left_exist = false;
@@ -293,27 +302,45 @@ int BinaryTree::display() const
 	else
 	    output_cc.push(NONE);
 	output.push(next);
-	
 	counter[next->depth]++;
     }
-    int off = 0;
+    /// Because some of the nodes are missing in an imcomplete tree,
+    /// so we use the variable off to compute the offset of the
+    /// display positon for every outputing node. That means we
+    /// actually print out a complete tree! In some cases, such as
+    /// each node only has right child, the complexity of this
+    /// function is 2 to the power of n, which is terrible. However,
+    /// this function obviously is only for small scale debuging
+    /// usages.
+    int off = 0;		/**< Offset of the position to display
+				 * a node. */
+    /// In this loop, we actually print the tree by using
+    /// std::cout. With the branches between nodes and their chidren.
     while (!output.empty())
     {
 	Node *next = output.front();
 	output.pop();
+	/// Fill the missing nodes.
 	while (off < next->pos)
 	{
 	    __make_space(__pow2(h - next->depth + 1));
 	    off++;
 	}
+	/// Offset for centrally print every node.
 	__make_space(__pow2(h - next->depth) - 2);
 	std::cout << std::setw(3) << std::left << next->data;
 	__make_space(__pow2(h - next->depth) - 1);
 	count++;
 	off++;
+	/// Record the printed node, the children status of these to
+	/// build the branches between nodes and their childern.
 	node_cache.push(next);
 	branch_cache.push(output_cc.front());
 	output_cc.pop();
+	/// The first condition means all nodes in this layer have
+	/// been printed, in the next we should print out a enter to
+	/// start a newline for branches. And the second condition
+	/// says if we are in the last layer, we don't do it.
 	if (count == counter[next->depth] && next->depth != h - 1)
 	{
 	    count = 0;
@@ -325,12 +352,16 @@ int BinaryTree::display() const
 		branch_cache.pop();
 		Node *next = node_cache.front();
 		node_cache.pop();
-		while (count < next->pos)
+		/// Again, we need comput the offset for the branches
+		/// of those missing node.
+		while (off < next->pos)
 		{
 		    __make_space(__pow2(h - next->depth + 1));
-		    count++;
+		    off++;
 		}
+		/// The offset for centrally print.
 		__make_space(__pow2(h - next->depth - 1) - 2);
+		/// Pick the different type of the branches.
 		if (cc == BOTH)
 		    __make_both_branch(__pow2(h - next->depth) + 1);
 		else if (cc == LEFT)
@@ -341,36 +372,13 @@ int BinaryTree::display() const
 		    __make_space(__pow2(h - next->depth) + 1);
 		__make_space(__pow2(h - next->depth - 1) - 2);
 		std::cout << "   ";
-		count++;
+		off++;
 	    }
-	    count = 0;
+	    off = 0;
 	    std::cout << std::endl;
 	}
     }
     std::cout << std::endl;
-    return 0;
-};
-
-int BinaryTree::display(BinaryTree::Node *_x, int _pos) const
-{
-    int h = height(_x);
-    int w = (1 << (h + 1)) - 1;
-    int off = (1 << h) - 2;
-    if (_x != NULL)
-    {
-	for (int i = 0; i < _pos; i++)
-	    std::cout << " ";
-	for (int i = 0; i < off; i++)
-	    std::cout << " ";
-	std::cout << std::setw(3) << _x->data;
-	if (off * 2 + 3 == w)
-	    std::cout << std::endl;
-	else
-	    for (int i = 0; i < off; i++)
-		std::cout << " ";
-	display(_x->left, _pos);
-	display(_x->right, _pos + off * 2 + 4);
-    }
     return 0;
 };
 
@@ -392,7 +400,6 @@ int BinaryTree::updateDepthandPos()
     return 0;
 };
 
-
 int BinaryTree::height(BinaryTree::Node *_x) const
 {
     if (_x == NULL)
@@ -405,7 +412,6 @@ int BinaryTree::height() const
 {
     return height(__root);
 }
-
 
 const BinarySearchTree::Node *BinarySearchTree::search(TYPE _d) const
 {
@@ -809,15 +815,47 @@ int BinarySearchTree::del(BinarySearchTree::Node *_x)
 int main(int argc, char *argv[])
 {
     BinarySearchTree A;
+    A.insert(16);
     A.insert(8);
-    A.insert(5);
-    A.insert(6);
+    A.insert(24);
+    A.insert(4);
+    A.insert(12);
+    A.insert(20);
+    A.insert(28);
     A.insert(2);
+    A.insert(6);
+    A.insert(10);
+    A.insert(14);
+    A.insert(18);
+    A.insert(22);
+    A.insert(26);
+    A.insert(30);
     A.insert(1);
+    A.insert(3);
+    A.insert(5);
     A.insert(7);
     A.insert(9);
-    A.insert(10);
     A.insert(11);
+    A.insert(13);
+    A.insert(15);
+    A.insert(17);
+    A.insert(19);
+    A.insert(21);
+    A.insert(23);
+    A.insert(25);
+    A.insert(27);
+    A.insert(29);
+    A.insert(31);
+    
+    A.updateDepthandPos();
+    A.display();
+    BinarySearchTree::Node *r = A.getRoot();
+    std::cout << "delete " << r->left->data << std::endl;
+    A.del(r->left);
+    A.updateDepthandPos();
+    A.display();
+    std::cout << "delete " << r->left->data << std::endl;
+    A.del(r->left);
     A.updateDepthandPos();
     A.display();
     return 0;
