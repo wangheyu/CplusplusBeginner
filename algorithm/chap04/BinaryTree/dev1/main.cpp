@@ -849,13 +849,21 @@ int main(int argc, char *argv[])
     
     A.updateDepthandPos();
     A.display();
+
     BinarySearchTree::Node *r = A.getRoot();
+    std::cout << "delete " << r->data << std::endl;
+    A.del(r);
+    A.updateDepthandPos();
+    A.display();
+
+    r = A.getRoot();
     std::cout << "delete " << r->left->data << std::endl;
     A.del(r->left);
     A.updateDepthandPos();
     A.display();
-    std::cout << "delete " << r->left->data << std::endl;
-    A.del(r->left);
+
+    std::cout << "delete " << r->left->right->left->data << std::endl;
+    A.del(r->left->right->left);
     A.updateDepthandPos();
     A.display();
     return 0;
