@@ -11,7 +11,7 @@ int main (int argc, char *argv[])
     fs >> length;
     std::vector<double> A(length);
     std::vector<double> B(length);
-    std::vector<double>::iterator A_it;
+    std::vector<double>::iterator A_it, ;
     std::vector<double>::iterator B_it;
     for (A_it = A.begin(); A_it != A.end(); ++A_it)
 	fs >> *A_it;

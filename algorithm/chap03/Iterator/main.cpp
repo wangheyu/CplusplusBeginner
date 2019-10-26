@@ -7,6 +7,9 @@ int main(int argc, char *argv[])
     std::vector<int> Vec(10);
     std::list<int> List(10);
 
+//    for (int i = 0; i < 10; i++)
+//	Vec[i] = i;
+    
     std::vector<int>::iterator Vec_iterator = Vec.begin();
     for (int i = 0; Vec_iterator != Vec.end(); ++Vec_iterator, ++i)
 	*Vec_iterator = i;
