@@ -1,64 +1,30 @@
-/**
- * @file   BinarySearchTree.h
- * @author Wang Heyu <wang@wukong>
- * @date   Sat Sep 21 09:41:33 2019
- * 
- * @brief An implementation of binary search tree.  
- * This is a demo for teaching, NOT recommended 
- * for any practical job.
- * 
- */
-
-#ifndef __CRAZYFISH__BinarySearchTree__
-#define __CRAZYFISH__BinarySearchTree__
-
-#include <iostream>
-#include <limits>
-#include <cstdlib>
 #include "BinaryTree.h"
 
-namespace CRAZYFISH{
-    template<typename TYPE> class BinarySearchTree;
-
-    /**
-     * An implementation of binary search tree, using standard C++ 
-     * dynamical memory allocation functions (new / delete). 
-     * TYPE can be char, int, long, double or long double. 
-     * 
-     */
-    template <typename TYPE>
-    class BinarySearchTree : public BinaryTree<TYPE>
-    {
-    public:
-	/** 
-	 * Default constructor.
-	 * 
-	 */
-	BinarySearchTree() : BinaryTree<TYPE>() {};
-	
-    	/** 
-	 * Using the constructor of the base class to construct 
-         * a new class with @p _val as its initial value of the 
-         * satellite data.
-	 * 
-	 * @param _val The initial value of the satellite data.
-	 */
-	BinarySearchTree(TYPE _val);
-
-	typedef typename BinaryTree<TYPE>::Node Node;
-	
-	/** 
-	 * Insert a node into the appropriate position to keep it 
-         * as a binary search tree.
-	 * 
-	 * @param _x The address of the new node.
-	 * 
-	 * @return 0 for OK, otherwise return -1.
-	 */
-	int insert(Node *_x);
-    };
-}
-#include "BinarySearchTree.templates.h"
-#else
-// Do nothing.
-#endif
+class BinarySearchTree : public BinaryTree
+{
+public:
+    const Node *search(TYPE _d) const;   // Node is inherited from the base class.
+    Node *search(TYPE _d);
+    Node *min();
+    const Node *min() const;
+    TYPE min_value() const;
+    Node *max();
+    const Node *max() const;
+    TYPE max_value() const;
+    Node *min(Node *_x);
+    const Node *min(const Node *_x) const;
+    TYPE min_value(const Node *_x) const;
+    Node *max(Node *_x);
+    const Node *max(const Node *_x) const;
+    TYPE max_value(const Node *_x) const;
+    Node *successor(Node *_x);
+    const Node *successor(const Node *_x) const;
+    TYPE succeeding_value(const Node *_x) const;
+    Node *predecessor(Node *_x);
+    const Node *predecessor(const Node *_x) const;
+    TYPE preceding_value(const Node *_x) const;
+    int insert(Node *_new);
+    int insert(const Node *_new);
+    int insert(TYPE _d);
+    int del(Node *_x);
+};
