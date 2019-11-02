@@ -7,4 +7,4 @@ main: $(object)
 	g++ -c $<
 
 clean:
-	rm *.o main *.exe -fr
+	rm *.o main test *.exe html latex -fr
