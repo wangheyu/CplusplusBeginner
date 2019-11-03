@@ -8,6 +8,10 @@
  * 
  * 
  */
+#ifndef __CRAZYFISH__BINARYSEARCHTREE__
+#define __CRAZYFISH__BINARYSEARCHTREE__
+
+
 #include "BinaryTree.h"
 
 /**
@@ -45,7 +49,7 @@ public:
      * 
      * @param _d The data for searching.
      * 
-     * @return The address of the node contains _d, and Nil if not
+     * @return The address of the node contains _d, and nil if not
      * found.
      */
     const Node *search(TYPE _d) const;
@@ -57,7 +61,7 @@ public:
      * 
      * @param _d The data for searching.
      * 
-     * @return The address of the node contains _d, and Nil if not
+     * @return The address of the node contains _d, and nil if not
      * found.
      */
     Node *search(TYPE _d);
@@ -250,3 +254,7 @@ public:
      */
     int del(Node *_x);
 };
+
+#else
+// DO NOTHING.
+#endif

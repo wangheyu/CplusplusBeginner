@@ -2,7 +2,7 @@
 
 BinaryTree::Node* BinaryTree::getRoot()
 {
-    if (root != Nil)
+    if (root != nil)
 	return root;
     else
 	return NULL;
@@ -10,7 +10,7 @@ BinaryTree::Node* BinaryTree::getRoot()
 
 const BinaryTree::Node* BinaryTree::getRoot() const
 {
-    if (root != Nil)
+    if (root != nil)
 	return (dynamic_cast<const Node *>(root));
     else
 	return NULL;
@@ -18,18 +18,18 @@ const BinaryTree::Node* BinaryTree::getRoot() const
 
 BinaryTree::BinaryTree(TYPE _new)
 {
-    Nil = new Node;
+    nil = new Node;
     Node *r = new Node;
     r->data = _new;
-    r->left = Nil;
-    r->right = Nil;
-    r->parent = Nil;
+    r->left = nil;
+    r->right = nil;
+    r->parent = nil;
     root = r;
 };
 
 int BinaryTree::inorder_walk(const Node *_x) const
 {
-    if (_x != Nil)
+    if (_x != nil)
     {
 	inorder_walk(_x->left);
 	std::cout << _x->data << " ";
@@ -40,7 +40,7 @@ int BinaryTree::inorder_walk(const Node *_x) const
 
 int BinaryTree::release(Node *_x)
 {
-    if (_x != Nil)
+    if (_x != nil)
     {
 	release(_x->left);
 	release(_x->right);
@@ -52,7 +52,7 @@ int BinaryTree::release(Node *_x)
 int BinaryTree::release()
 {
     release(root);
-    root = Nil;
+    root = nil;
     return 0;
 };
 
@@ -71,19 +71,19 @@ int BinaryTree::setRoot(Node *_r)
 int BinaryTree::transplant(Node *_u,
 			   Node *_v)
 {
-    if (_u == Nil)
+    if (_u == nil)
     {
 	std::cerr << "Error! Can not transplant to a NULL."
 		  << std::endl;
 	std::exit(-1);
     }
-    if (_u->parent == Nil)
+    if (_u->parent == nil)
 	root = _v;   /// Here can not use _u = _v;
     else if (_u == _u->parent->left)
 	_u->parent->left = _v;
     else
 	_u->parent->right = _v;
-    if (_v != Nil)
+    if (_v != nil)
 	_v->parent = _u->parent;
     return 0;
 };
@@ -148,7 +148,7 @@ int BinaryTree::display()
     std::queue<ChildCases> branch_cache;
     // Cache the nodes for outputing. 
     std::queue<Node *> node_cache; 
-    if (root != Nil)
+    if (root != nil)
 	val.push(root);
     else
     {
@@ -173,12 +173,12 @@ int BinaryTree::display()
 	bool right_exist = false;
 	Node *next = val.front();
 	val.pop();
-	if (next->left != Nil)
+	if (next->left != nil)
 	{
 	    val.push(next->left);
 	    left_exist = true;
 	}
-	if (next->right != Nil)
+	if (next->right != nil)
 	{
 	    val.push(next->right);
 	    right_exist = true;
@@ -274,7 +274,7 @@ int BinaryTree::display()
 
 int BinaryTree::updateDepthandPos(Node *_x, int _d, int _p)
 {
-    if (_x != Nil)
+    if (_x != nil)
     {
 	_x->depth = _d;
 	_x->pos = _p;
@@ -292,7 +292,7 @@ int BinaryTree::updateDepthandPos()
 
 int BinaryTree::height(const Node *_x) const
 {
-    if (_x == Nil)
+    if (_x == nil)
 	return 0;
     else
 	return std::max(height(_x->left), height(_x->right)) + 1;
@@ -310,12 +310,12 @@ BinaryTree::~BinaryTree()
 
 int BinaryTree::insertLeft(Node *_x, TYPE _val)
 {
-    if (_x == Nil)
+    if (_x == nil)
     {
 	std::cerr << "Error! The tree is empty." << std::endl;
 	return -1;
     }
-    if (_x->left != Nil)
+    if (_x->left != nil)
     {
 	std::cerr << "Error! The left child is ocuupied." << std::endl;
 	return -1;
@@ -323,20 +323,20 @@ int BinaryTree::insertLeft(Node *_x, TYPE _val)
     Node *t = new Node;
     t->parent = _x;
     t->data = _val;
-    t->left = Nil;
-    t->right = Nil;
+    t->left = nil;
+    t->right = nil;
     _x->left = t;
     return 0;
 };
 
 int BinaryTree::insertRight(Node *_x, TYPE _val)
 {
-    if (_x == Nil)
+    if (_x == nil)
     {
 	std::cerr << "Error! The tree is empty." << std::endl;
 	return -1;
     }
-    if (_x->right != Nil)
+    if (_x->right != nil)
     {
 	std::cerr << "Error! The right child is ocuupied." << std::endl;
 	return -1;
@@ -344,8 +344,8 @@ int BinaryTree::insertRight(Node *_x, TYPE _val)
     Node *t = new Node;
     t->parent = _x;
     t->data = _val;
-    t->left = Nil;
-    t->right = Nil;
+    t->left = nil;
+    t->right = nil;
     _x->right = t;
     return 0;
 };

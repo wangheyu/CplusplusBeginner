@@ -10,6 +10,9 @@
  * 
  */
 
+#ifndef __CRAZYFISH__BINARYTREE__
+#define __CRAZYFISH__BINARYTREE__
+
 #include <limits>
 #include <iomanip>
 #include <algorithm>
@@ -35,13 +38,13 @@ public:
 protected:
     Node *root;			/**< The address of the root node. And
 				 * if the tree is empty, this root
-				 * points to the sentinel node Nil.*/
-    Node *Nil;			/**< The sentinel node, its data,
+				 * points to the sentinel node nil.*/
+    Node *nil;			/**< The sentinel node, its data,
 				 * children and parent are all
 				 * insignificance, it is just a mark
 				 * for NULL, but has the whole
 				 * structure as a normal node. And for
-				 * all interfaces, Nil will transfer
+				 * all interfaces, nil will transfer
 				 * to NULL.*/
 
 private:
@@ -98,8 +101,8 @@ public:
      */
     BinaryTree()
     {
-	Nil = new Node;
-	root = Nil;
+	nil = new Node;
+	root = nil;
     };
 
     /** 
@@ -254,3 +257,7 @@ public:
      */
     int insertRight(Node *_x, TYPE _val);
 };
+
+#else
+// DO NOTHING.
+#endif

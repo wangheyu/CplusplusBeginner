@@ -43,11 +43,28 @@ public:
      */
     RedBlackTree();
 
+    /** 
+     * Convert the interface for the node type of red-black trees by
+     * reload.
+     * 
+     * @param _d The data for searching.
+     * 
+     * @return The address of the node contains _d, and nil if not
+     * found.
+     */
     Node *search(TYPE _d);
+
+    /** 
+     * Find the node whose data is the minimum under the node _x.
+     * 
+     * 
+     * @return The address of the node with the minimum.
+     */
+    Node *min(Node *_x);
 
 protected:
     Node *root;
-    Node *Nil;
+    Node *nil;
 };
 
 #else

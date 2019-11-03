@@ -3,14 +3,14 @@
 const BinarySearchTree::Node *BinarySearchTree::search(TYPE _d) const
 {
     const Node *x = root;
-    while (x != Nil && _d != x->data)
+    while (x != nil && _d != x->data)
 	// Here the decision rule has to accord with the one in the
 	// insert function.
     	if (_d < x->data)
     	    x = x->left;
     	else
     	    x = x->right;
-    if (x != Nil)
+    if (x != nil)
 	return x;
     else
 	return NULL;
@@ -19,14 +19,14 @@ const BinarySearchTree::Node *BinarySearchTree::search(TYPE _d) const
 BinarySearchTree::Node *BinarySearchTree::search(TYPE _d)
 {
     Node *x = root;
-    while (x != Nil && _d != x->data)
+    while (x != nil && _d != x->data)
 	// Here the decision rule has to accord with the one in the
 	// insert function.
     	if (_d < x->data)
     	    x = x->left;
     	else
     	    x = x->right;
-    if (x != Nil)
+    if (x != nil)
 	return x;
     else
 	return NULL;
@@ -35,10 +35,10 @@ BinarySearchTree::Node *BinarySearchTree::search(TYPE _d)
 BinarySearchTree::Node *BinarySearchTree::min()
 {
     Node *x = root;
-    if (x != Nil)
-	while (x->left != Nil)
+    if (x != nil)
+	while (x->left != nil)
 	    x = x->left;
-    if (x != Nil)
+    if (x != nil)
 	return x;
     else
 	return NULL;
@@ -47,10 +47,10 @@ BinarySearchTree::Node *BinarySearchTree::min()
 const BinarySearchTree::Node *BinarySearchTree::min() const
 {
     const Node *x = root;
-    if (x != Nil)
-	while (x->left != Nil)
+    if (x != nil)
+	while (x->left != nil)
 	    x = x->left;
-    if (x != Nil)
+    if (x != nil)
 	return x;
     else
 	return NULL;
@@ -59,12 +59,12 @@ const BinarySearchTree::Node *BinarySearchTree::min() const
 TYPE BinarySearchTree::min_value() const
 {
     const Node *x = root;
-    if (x == Nil)
+    if (x == nil)
     {
 	std::cerr << "Error! The tree is empty." << std::endl;
 	return -1;
     }
-    while (x->left != Nil)
+    while (x->left != nil)
 	x = x->left;
     return x->data;
 };
@@ -72,10 +72,10 @@ TYPE BinarySearchTree::min_value() const
 BinarySearchTree::Node *BinarySearchTree::max()
 {
     Node *x = root;
-    if (x != Nil)
-	while (x->right != Nil)
+    if (x != nil)
+	while (x->right != nil)
 	    x = x->right;
-    if (x != Nil)
+    if (x != nil)
 	return x;
     else
 	return NULL;
@@ -84,10 +84,10 @@ BinarySearchTree::Node *BinarySearchTree::max()
 const BinarySearchTree::Node *BinarySearchTree::max() const
 {
     const Node *x = root;
-    if (x != Nil)
-	while (x->right != Nil)
+    if (x != nil)
+	while (x->right != nil)
 	    x = x->right;
-    if (x != Nil)
+    if (x != nil)
 	return x;
     else
 	return NULL;
@@ -96,12 +96,12 @@ const BinarySearchTree::Node *BinarySearchTree::max() const
 TYPE BinarySearchTree::max_value() const
 {
     const Node *x = root;
-    if (x == Nil)
+    if (x == nil)
     {
 	std::cerr << "Error! The tree is empty." << std::endl;
 	return -1;
     }
-    while (x->right != Nil)
+    while (x->right != nil)
 	x = x->right;
     return x->data;
 };
@@ -109,10 +109,10 @@ TYPE BinarySearchTree::max_value() const
 BinarySearchTree::Node *
 BinarySearchTree::min(Node *_x)
 {
-    if (_x != Nil)
-	while (_x->left != Nil)
+    if (_x != nil)
+	while (_x->left != nil)
 	    _x = _x->left;
-    if (_x != Nil)
+    if (_x != nil)
 	return _x;
     else
 	return NULL;
@@ -121,10 +121,10 @@ BinarySearchTree::min(Node *_x)
 const BinarySearchTree::Node *
 BinarySearchTree::min(const Node *_x) const
 {
-    if (_x != Nil)
-	while (_x->left != Nil)
+    if (_x != nil)
+	while (_x->left != nil)
 	    _x = _x->left;
-    if (_x != Nil)
+    if (_x != nil)
 	return _x;
     else
 	return NULL;
@@ -133,12 +133,12 @@ BinarySearchTree::min(const Node *_x) const
 TYPE
 BinarySearchTree::min_value(const Node *_x) const
 {
-    if (_x == Nil)
+    if (_x == nil)
     {
 	std::cerr << "Error! The node is a NULL." << std::endl;
 	return -1;
     }
-    while (_x->left != Nil)
+    while (_x->left != nil)
 	_x = _x->left;
     return _x->data;
 };
@@ -146,10 +146,10 @@ BinarySearchTree::min_value(const Node *_x) const
 BinarySearchTree::Node *
 BinarySearchTree::max(Node *_x)
 {
-    if (_x != Nil)
-	while (_x->right != Nil)
+    if (_x != nil)
+	while (_x->right != nil)
 	    _x = _x->right;
-    if (_x != Nil)
+    if (_x != nil)
 	return _x;
     else
 	return NULL;
@@ -158,10 +158,10 @@ BinarySearchTree::max(Node *_x)
 const BinarySearchTree::Node *
 BinarySearchTree::max(const Node *_x) const
 {
-    if (_x != Nil)
-	while (_x->right != Nil)
+    if (_x != nil)
+	while (_x->right != nil)
 	    _x = _x->right;
-    if (_x != Nil)
+    if (_x != nil)
 	return _x;
     else
 	return NULL;
@@ -170,12 +170,12 @@ BinarySearchTree::max(const Node *_x) const
 TYPE
 BinarySearchTree::max_value(const Node *_x) const
 {
-    if (_x == Nil)
+    if (_x == nil)
     {
 	std::cerr << "Error! The node is a NULL." << std::endl;
 	return -1;
     }
-    while (_x->right != Nil)
+    while (_x->right != nil)
 	_x = _x->right;
     return _x->data;
 };
@@ -183,20 +183,20 @@ BinarySearchTree::max_value(const Node *_x) const
 BinarySearchTree::Node *
 BinarySearchTree::successor(Node *_x)
 {
-    if (_x == Nil)
+    if (_x == nil)
     {
 	std::cerr << "Error! The node is a NULL." << std::endl;
 	return NULL;
     }
-    if (_x->right != Nil)
+    if (_x->right != nil)
 	return min(_x->right);
     Node *y = _x->parent;
-    while (y != Nil && _x == y->right)
+    while (y != nil && _x == y->right)
     {
 	_x = y;
 	y = y->parent;
     }
-    if (y != Nil)
+    if (y != nil)
 	return y;
     else
 	return NULL;
@@ -205,21 +205,21 @@ BinarySearchTree::successor(Node *_x)
 const BinarySearchTree::Node *
 BinarySearchTree::successor(const Node *_x) const
 {
-    if (_x == Nil)
+    if (_x == nil)
     {
 	std::cerr << "Error! The node is a NULL." << std::endl;
 	return NULL;
     }
-    if (_x->right != Nil)
+    if (_x->right != nil)
 	return min(_x->right);
     // Use const for safty.
     const Node *y = _x->parent;
-    while (y != Nil && _x == y->right)
+    while (y != nil && _x == y->right)
     {
 	_x = y;
 	y = y->parent;
     }
-    if (y != Nil)
+    if (y != nil)
 	return y;
     else
 	return NULL;
@@ -228,21 +228,21 @@ BinarySearchTree::successor(const Node *_x) const
 TYPE
 BinarySearchTree::succeeding_value(const Node *_x) const
 {
-    if (_x == Nil)
+    if (_x == nil)
     {
 	std::cerr << "Error! The node is a NULL." << std::endl;
 	std::exit(-1);
     }
-    if (_x->right != Nil)
+    if (_x->right != nil)
 	return min_value(_x->right);   
     // Use const for safty.
     const Node *y = _x->parent;
-    while (y != Nil && _x == y->right)
+    while (y != nil && _x == y->right)
     {
 	_x = y;
 	y = y->parent;
     }
-    if (y == Nil)
+    if (y == nil)
     {
 	std::cerr << "There is no successor of the maximum node."
 		  << std::endl;
@@ -256,21 +256,21 @@ BinarySearchTree::succeeding_value(const Node *_x) const
 BinarySearchTree::Node *
 BinarySearchTree::predecessor(Node *_x)
 {
-    if (_x == Nil)
+    if (_x == nil)
     {
 	std::cerr << "Error! The node is a NULL." << std::endl;
 	return NULL;
     }
 
-    if (_x->left != Nil)
+    if (_x->left != nil)
 	return max(_x->left);
     Node *y = _x->parent;
-    while (y != Nil && _x == y->left)
+    while (y != nil && _x == y->left)
     {
 	_x = y;
 	y = y->parent;
     }
-    if (y != Nil)
+    if (y != nil)
 	return y;
     else
 	return NULL;
@@ -279,20 +279,20 @@ BinarySearchTree::predecessor(Node *_x)
 const BinarySearchTree::Node *
 BinarySearchTree::predecessor(const Node *_x) const
 {
-    if (_x == Nil)
+    if (_x == nil)
     {
 	std::cerr << "Error! The node is a NULL." << std::endl;
 	return NULL;
     }
-    if (_x->left != Nil)
+    if (_x->left != nil)
 	return max(_x->left);
     const Node *y = _x->parent;
-    while (y != Nil && _x == y->left)
+    while (y != nil && _x == y->left)
     {
 	_x = y;
 	y = y->parent;
     }
-    if (y == Nil)
+    if (y == nil)
 	return y;
     else
 	return NULL;
@@ -301,15 +301,15 @@ BinarySearchTree::predecessor(const Node *_x) const
 TYPE
 BinarySearchTree::preceding_value(const Node *_x) const
 {
-    if (_x == Nil)
+    if (_x == nil)
     {
 	std::cerr << "Error! The node is a NULL." << std::endl;
 	std::exit(-1);
     }
-    if (_x->left != Nil)
+    if (_x->left != nil)
 	return max_value(_x->left);
     const Node *y = _x->parent;
-    while (y != Nil && _x == y->left)
+    while (y != nil && _x == y->left)
     {
 	_x = y;
 	y = y->parent;
@@ -326,11 +326,11 @@ BinarySearchTree::preceding_value(const Node *_x) const
 
 int BinarySearchTree::insert(Node *_new)
 {
-    Node *y = Nil;
+    Node *y = nil;
     Node *x = root;
     // Make sure that _new is a single node binary tree.
-    _new->left = _new->right = Nil;
-    while (x != Nil)
+    _new->left = _new->right = nil;
+    while (x != nil)
     {
 	y = x;
 	// The nodes less than to the left, then these greater than or
@@ -341,7 +341,7 @@ int BinarySearchTree::insert(Node *_new)
 	    x = x->right;
     }
     _new->parent = y;
-    if (y == Nil)
+    if (y == nil)
 	root = _new;
     // Here the decision rule has to same as above.
     else if (_new->data < y->data)
@@ -353,13 +353,13 @@ int BinarySearchTree::insert(Node *_new)
 
 int BinarySearchTree::insert(TYPE _d)
 {
-    Node *y = Nil;
+    Node *y = nil;
     Node *x = root;
     Node *z = new Node(_d);
-    // Here has to reset the Nil, since the Node do not contains the
-    // definatio of Nil.
-    z->left = z->right = Nil;
-    while (x != Nil)
+    // Here has to reset the nil, since the Node do not contains the
+    // definatio of nil.
+    z->left = z->right = nil;
+    while (x != nil)
     {
     	y = x;
 	// The nodes less than to the left, then these greater than or
@@ -370,7 +370,7 @@ int BinarySearchTree::insert(TYPE _d)
     	    x = x->right;
     }
     z->parent = y;
-    if (y == Nil)
+    if (y == nil)
     	root = z;
     // Here the decision rule has to same as above.
     else if (z->data < y->data)
@@ -382,9 +382,9 @@ int BinarySearchTree::insert(TYPE _d)
 
 int BinarySearchTree::del(Node *_x)
 {
-    if (_x->left == Nil)
+    if (_x->left == nil)
 	transplant(_x, _x->right);
-    else if (_x->right == Nil)
+    else if (_x->right == nil)
 	transplant(_x, _x->left);
     else
     {

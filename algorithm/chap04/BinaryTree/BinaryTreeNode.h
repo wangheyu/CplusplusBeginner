@@ -8,6 +8,9 @@
  * 
  */
 
+#ifndef __CRAZYFISH__BINARYTREENODE__
+#define __CRAZYFISH__BINARYTREENODE__
+
 #include <iostream>
 #include <cstdlib>
 
@@ -73,3 +76,7 @@ public:
      */
     ~BinaryTreeNode();
 };
+
+#else
+// DO NOTHING.
+#endif
