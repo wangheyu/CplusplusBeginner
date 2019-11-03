@@ -1,0 +1,11 @@
+#include "RedBlackTree.h"
+
+int main(int argc, char *argv[])
+{
+    RedBlackTree A;
+    RedBlackTree B(1);
+//    RedBlackTree::Node *t = static_cast<RedBlackTree::Node *>(B.search(1));
+    RedBlackTree::Node *t = B.search(1);
+    std::cout << "t->data:" << t->data << std::endl;
+    return 0;
+};
