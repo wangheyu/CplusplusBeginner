@@ -28,3 +28,10 @@ RedBlackTree::Node *RedBlackTree::min(Node *_x)
 {
     return static_cast<Node *>(BinarySearchTree::min(static_cast<BinaryTreeNode *>(_x)));
 };
+
+int RedBlackTree::insert(TYPE _d)
+{
+    Node *t = new Node(_d);
+    t->color = RED;
+    BinarySearchTree::insert(t);
+};
