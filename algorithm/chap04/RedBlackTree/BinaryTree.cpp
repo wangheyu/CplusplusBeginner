@@ -19,6 +19,7 @@ const BinaryTree::Node* BinaryTree::getRoot() const
 BinaryTree::BinaryTree(TYPE _new)
 {
     nil = new Node;
+    nil->color = BLACK;
     Node *r = new Node;
     r->data = _new;
     r->left = nil;
@@ -83,8 +84,8 @@ int BinaryTree::transplant(Node *_u,
 	_u->parent->left = _v;
     else
 	_u->parent->right = _v;
-    if (_v != nil)
-	_v->parent = _u->parent;
+//    if (_v != nil)
+    _v->parent = _u->parent;
     return 0;
 };
 
@@ -360,3 +361,42 @@ int BinaryTree::insertRight(Node *_x, TYPE _val)
     _x->right = t;
     return 0;
 };
+
+int BinaryTree::RightRotate(Node *_x)
+{
+    Node *y = _x->left;
+    _x->left = y->right;
+    if (y->right != nil)
+	y->right->parent = _x;
+    y->parent = _x->parent;
+    if (_x->parent == nil)
+	root = y;
+    // if _x is _x's parent's left child,
+    else if (_x == _x->parent->left)
+	// set y as _x's parent's left child.
+	_x->parent->left = y;
+    else
+	_x->parent->right = y;
+    y->right = _x;
+    _x->parent = y;
+};
+
+int BinaryTree::LeftRotate(Node *_x)
+{
+    Node *y = _x->right;
+    _x->right = y->left;
+    if (y->left != nil)
+	y->left->parent = _x;
+    y->parent = _x->parent;
+    if (_x->parent == nil)
+	root = y;
+    // if _x is _x's parent's left child,
+    else if (_x == _x->parent->left)
+	// set y as _x's parent's left child.
+	_x->parent->left = y;
+    else
+	_x->parent->right = y;
+    y->left = _x;
+    _x->parent = y;
+};
+

@@ -111,6 +111,7 @@ public:
     BinaryTree()
     {
 	nil = new Node;
+	nil->color = BLACK;
 	root = nil;
     };
 
@@ -265,6 +266,10 @@ public:
      * @return 0 for OK.
      */
     int insertRight(Node *_x, TYPE _val);
+
+    int RightRotate(Node *_x);
+
+    int LeftRotate(Node *_x);
 };
 
 #else
