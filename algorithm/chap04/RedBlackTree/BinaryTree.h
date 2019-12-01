@@ -35,14 +35,18 @@
 #define MC "\033[35m" /* Magenta */
 #define CC "\033[36m" /* Cyan */
 
+template <class TYPE>
+class BinaryTree;
+
 /**
  * The basic definition of a binary tree.
  * 
  */
+template <class TYPE>
 class BinaryTree
 {
 public:
-    typedef BinaryTreeNode Node;
+    typedef BinaryTreeNode<TYPE> Node;
 
 protected:
     Node *root;			/**< The address of the root node. And

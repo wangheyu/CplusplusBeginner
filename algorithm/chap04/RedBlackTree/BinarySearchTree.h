@@ -14,6 +14,9 @@
 
 #include "BinaryTree.h"
 
+template <class TYPE>
+class BinarySearchTree;
+
 /**
  * The BinarySearchTree is based on BinaryTree, providing very basic
  * oprations. The data of nodes can be at same values, then in the
@@ -21,9 +24,12 @@
  * rule is implicitly defined in the function insert.
  * 
  */
-class BinarySearchTree : public BinaryTree
+template <class TYPE>
+class BinarySearchTree : public BinaryTree<TYPE>
 {
 public:
+    typedef typename BinaryTree<TYPE>::Node Node;
+    
     /** 
      * Constructor. Create a new tree contains only one node which the
      * data is given.
@@ -31,7 +37,7 @@ public:
      * @param _val The given data.
      * 
      */
-    BinarySearchTree(TYPE _val) : BinaryTree(_val)
+    BinarySearchTree(TYPE _val) : BinaryTree<TYPE>(_val)
     {};
 
     /** 

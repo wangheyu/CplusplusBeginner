@@ -16,18 +16,15 @@
 #define BLACK false
 #define RED true
 
-
-/**
- * Temporally use typedef instead of template.
- * 
- */
-typedef int TYPE;
-
 /**
  * The node structure of the binary tree. Set all members as public
  * for efficiency.
  * 
  */
+template <class TYPE>
+class BinaryTreeNode;
+
+template <class TYPE>
 class BinaryTreeNode
 {
 public:

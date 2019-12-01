@@ -13,9 +13,15 @@
 
 #include "BinarySearchTree.h"
 
-class RedBlackTree : public BinarySearchTree
+template <class TYPE>
+class RedBlackTree;
+
+template <class TYPE>
+class RedBlackTree : public BinarySearchTree<TYPE>
 {
 public:
+    typedef typename BinarySearchTree<TYPE>::Node Node;
+    
     /** 
      * Constructor. Create a new tree contains only one node which the
      * data is given.
@@ -23,9 +29,9 @@ public:
      * @param _val The given data.
      * 
      */
-    RedBlackTree(TYPE _val) : BinarySearchTree(_val)
+    RedBlackTree(TYPE _val) : BinarySearchTree<TYPE>(_val)
     {
-	root->color = BLACK;
+	this->root->color = BLACK;
     };
 
     /** 
